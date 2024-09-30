@@ -63,7 +63,7 @@ impl ResourceStore {
                    WHERE json.key = 'taken'
                      AND json.value NOT NULL
                      AND resources.id NOT IN (SELECT id FROM hidden)
-                     AND strftime('%m-%d', json.value) BETWEEN strftime('%m-%d', 'now', 'localtime', '-3 days') AND strftime('%m-%d', 'now', 'localtime', '+3 days')
+                     AND strftime('%m-%d', json.value) BETWEEN strftime('%m-%d', 'now', 'localtime', '-15 days') AND strftime('%m-%d', 'now', 'localtime', '+15 days')
                    ORDER BY RANDOM()
                    ;"#;
         execute_query(&connection, regular_week_query)
